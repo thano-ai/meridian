@@ -1,0 +1,8 @@
+{
+  "app": "Meridian Business Suite",
+  "environment": "production",
+  "debug": true,
+  "support_email": "it@meridian.local",
+  "flag_endpoint": "/hidden/flag-submit",
+  "note": "Open flag_endpoint in the browser while logged in"
+}

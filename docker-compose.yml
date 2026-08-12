@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4721:4721'
+    environment:
+      - PORT=4721
+      - JWT_SECRET=super-weak-jwt-secret-change-me
+      - SECRET_SALT=vuln-biz-app-salt-2024
+      - WHATSAPP_ENABLED=false
+      - NODE_ENV=production
+    volumes:
+      - ./backup:/app/backup:ro
+      - ./config:/app/config:ro
+      - ./data:/app/data
+    restart: unless-stopped

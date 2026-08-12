@@ -1,0 +1,20 @@
+📋 SECURITY ASSESSMENT REPORT
+{{fullName}}
+{{academicId}}
+
+🎯 Total Vulnerabilities Found: {{foundCount}}
+
+🔴 Critical: {{critical}} ({{criticalPts}}pts)
+🟠 High: {{high}} ({{highPts}}pts)
+🟡 Medium: {{medium}} ({{mediumPts}}pts)
+🟢 Low: {{low}} ({{lowPts}}pts)
+🔵 Info: {{info}} ({{infoPts}}pts)
+
+📊 TOTAL SCORE: {{score}}/100
+🏅 {{ranking}}
+
+📌 Discovered Vulnerabilities:
+{{details}}
+
+🔒 Thank you for helping secure our systems!
+Report generated: {{timestamp}}

@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "employee_code": "EMP-00001",
+    "full_name": "David Johnson",
+    "department": "IT",
+    "title": "Associate"
+  },
+  {
+    "id": 2,
+    "employee_code": "EMP-00002",
+    "full_name": "Barbara Singh",
+    "department": "Legal",
+    "title": "Senior Specialist"
+  },
+  {
+    "id": 3,
+    "employee_code": "EMP-00003",
+    "full_name": "Jessica Nguyen",
+    "department": "Sales",
+    "title": "Associate"
+  },
+  {
+    "id": 4,
+    "employee_code": "EMP-00004",
+    "full_name": "Youssef Smith",
+    "department": "Marketing",
+    "title": "Lead"
+  },
+  {
+    "id": 5,
+    "employee_code": "EMP-00005",
+    "full_name": "Fatima Martinez",
+    "department": "Engineering",
+    "title": "Director"
+  },
+  {
+    "id": 6,
+    "employee_code": "EMP-00006",
+    "full_name": "Jessica Williams",
+    "department": "Engineering",
+    "title": "Analyst"
+  },
+  {
+    "id": 7,
+    "employee_code": "EMP-00007",
+    "full_name": "Mary Garcia",
+    "department": "Sales",
+    "title": "Manager"
+  },
+  {
+    "id": 8,
+    "employee_code": "EMP-00008",
+    "full_name": "Charles Garcia",
+    "department": "Marketing",
+    "title": "Associate"
+  },
+  {
+    "id": 9,
+    "employee_code": "EMP-00009",
+    "full_name": "Richard AlMaktoum",
+    "department": "R&D",
+    "title": "Consultant"
+  },
+  {
+    "id": 10,
+    "employee_code": "EMP-00010",
+    "full_name": "Susan Patel",
+    "department": "Operations",
+    "title": "Senior Specialist"
+  },
+  {
+    "id": 11,
+    "employee_code": "EMP-00011",
+    "full_name": "Jennifer Johnson",
+    "department": "IT",
+    "title": "Senior Specialist"
+  },
+  {
+    "id": 12,
+    "employee_code": "EMP-00012",
+    "full_name": "Susan Smith",
+    "department": "Finance",
+    "title": "Manager"
+  },
+  {
+    "id": 13,
+    "employee_code": "EMP-00013",
+    "full_name": "William Brown",
+    "department": "Engineering",
+    "title": "Manager"
+  },
+  {
+    "id": 14,
+    "employee_code": "EMP-00014",
+    "full_name": "Joseph Smith",
+    "department": "Marketing",
+    "title": "Senior Specialist"
+  },
+  {
+    "id": 15,
+    "employee_code": "EMP-00015",
+    "full_name": "Barbara Hassan",
+    "department": "Engineering",
+    "title": "Associate"
+  },
+  {
+    "id": 16,
+    "employee_code": "EMP-00016",
+    "full_name": "Mariam Miller",
+    "department": "IT",
+    "title": "Director"
+  },
+  {
+    "id": 17,
+    "employee_code": "EMP-00017",
+    "full_name": "Jennifer Khan",
+    "department": "IT",
+    "title": "Lead"
+  },
+  {
+    "id": 18,
+    "employee_code": "EMP-00018",
+    "full_name": "Hassan AlMaktoum",
+    "department": "Operations",
+    "title": "Senior Specialist"
+  },
+  {
+    "id": 19,
+    "employee_code": "EMP-00019",
+    "full_name": "Noor Smith",
+    "department": "Customer Success",
+    "title": "Associate"
+  },
+  {
+    "id": 20,
+    "employee_code": "EMP-00020",
+    "full_name": "Jessica Singh",
+    "department": "Sales",
+    "title": "Manager"
+  },
+  {
+    "id": 21,
+    "employee_code": "EMP-00021",
+    "full_name": "Sarah Kim",
+    "department": "Operations",
+    "title": "Director"
+  },
+  {
+    "id": 22,
+    "employee_code": "EMP-00022",
+    "full_name": "Noor Smith",
+    "department": "Legal",
+    "title": "Director"
+  },
+  {
+    "id": 23,
+    "employee_code": "EMP-00023",
+    "full_name": "Elizabeth Patel",
+    "department": "Engineering",
+    "title": "Coordinator"
+  },
+  {
+    "id": 24,
+    "employee_code": "EMP-00024",
+    "full_name": "Linda Ali",
+    "department": "Finance",
+    "title": "Manager"
+  },
+  {
+    "id": 25,
+    "employee_code": "EMP-00025",
+    "full_name": "Susan Garcia",
+    "department": "R&D",
+    "title": "Lead"
+  },
+  {
+    "id": 26,
+    "employee_code": "EMP-00026",
+    "full_name": "Sarah Patel",
+    "department": "Operations",
+    "title": "Director"
+  },
+  {
+    "id": 27,
+    "employee_code": "EMP-00027",
+    "full_name": "Robert Martinez",
+    "department": "HR",
+    "title": "Senior Specialist"
+  },
+  {
+    "id": 28,
+    "employee_code": "EMP-00028",
+    "full_name": "Layla Johnson",
+    "department": "R&D",
+    "title": "Manager"
+  },
+  {
+    "id": 29,
+    "employee_code": "EMP-00029",
+    "full_name": "Richard Nguyen",
+    "department": "HR",
+    "title": "Analyst"
+  },
+  {
+    "id": 30,
+    "employee_code": "EMP-00030",
+    "full_name": "Ahmed Martinez",
+    "department": "HR",
+    "title": "Associate"
+  },
+  {
+    "id": 31,
+    "employee_code": "EMP-00031",
+    "full_name": "Sarah Hassan",
+    "department": "Finance",
+    "title": "Consultant"
+  },
+  {
+    "id": 32,
+    "employee_code": "EMP-00032",
+    "full_name": "Barbara Ali",
+    "department": "R&D",
+    "title": "Analyst"
+  },
+  {
+    "id": 33,
+    "employee_code": "EMP-00033",
+    "full_name": "Sarah Hassan",
+    "department": "HR",
+    "title": "Coordinator"
+  },
+  {
+    "id": 34,
+    "employee_code": "EMP-00034",
+    "full_name": "Omar Khan",
+    "department": "Legal",
+    "title": "Manager"
+  },
+  {
+    "id": 35,
+    "employee_code": "EMP-00035",
+    "full_name": "Youssef Singh",
+    "department": "HR",
+    "title": "Director"
+  },
+  {
+    "id": 36,
+    "employee_code": "EMP-00036",
+    "full_name": "Khalid Rodriguez",
+    "department": "HR",
+    "title": "Coordinator"
+  },
+  {
+    "id": 37,
+    "employee_code": "EMP-00037",
+    "full_name": "Robert Jones",
+    "department": "Operations",
+    "title": "Consultant"
+  },
+  {
+    "id": 38,
+    "employee_code": "EMP-00038",
+    "full_name": "Thomas Smith",
+    "department": "R&D",
+    "title": "Associate"
+  },
+  {
+    "id": 39,
+    "employee_code": "EMP-00039",
+    "full_name": "Youssef AlHashimi",
+    "department": "Sales",
+    "title": "Manager"
+  },
+  {
+    "id": 40,
+    "employee_code": "EMP-00040",
+    "full_name": "Karen AlHashimi",
+    "department": "Customer Success",
+    "title": "Director"
+  },
+  {
+    "id": 41,
+    "employee_code": "EMP-00041",
+    "full_name": "James AlHashimi",
+    "department": "Marketing",
+    "title": "Consultant"
+  },
+  {
+    "id": 42,
+    "employee_code": "EMP-00042",
+    "full_name": "Khalid Smith",
+    "department": "IT",
+    "title": "Manager"
+  },
+  {
+    "id": 43,
+    "employee_code": "EMP-00043",
+    "full_name": "Barbara Nguyen",
+    "department": "Marketing",
+    "title": "Consultant"
+  },
+  {
+    "id": 44,
+    "employee_code": "EMP-00044",
+    "full_name": "Mariam Davis",
+    "department": "HR",
+    "title": "Associate"
+  },
+  {
+    "id": 45,
+    "employee_code": "EMP-00045",
+    "full_name": "Susan Miller",
+    "department": "R&D",
+    "title": "Analyst"
+  },
+  {
+    "id": 46,
+    "employee_code": "EMP-00046",
+    "full_name": "Khalid Johnson",
+    "department": "Operations",
+    "title": "Manager"
+  },
+  {
+    "id": 47,
+    "employee_code": "EMP-00047",
+    "full_name": "Aisha Chen",
+    "department": "Operations",
+    "title": "Consultant"
+  },
+  {
+    "id": 48,
+    "employee_code": "EMP-00048",
+    "full_name": "Mary Nguyen",
+    "department": "Marketing",
+    "title": "Analyst"
+  },
+  {
+    "id": 49,
+    "employee_code": "EMP-00049",
+    "full_name": "Barbara AlMaktoum",
+    "department": "Sales",
+    "title": "Analyst"
+  },
+  {
+    "id": 50,
+    "employee_code": "EMP-00050",
+    "full_name": "Patricia Ali",
+    "department": "HR",
+    "title": "Associate"
+  }
+]

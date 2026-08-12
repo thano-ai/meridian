@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "sku": "SKU-000001",
+    "name": "Electronics Product 1",
+    "category": "Electronics",
+    "price": 3848,
+    "stock": 420
+  },
+  {
+    "id": 2,
+    "sku": "SKU-000002",
+    "name": "Hardware Product 2",
+    "category": "Hardware",
+    "price": 2990,
+    "stock": 311
+  },
+  {
+    "id": 3,
+    "sku": "SKU-000003",
+    "name": "Safety Product 3",
+    "category": "Safety",
+    "price": 2643,
+    "stock": 83
+  },
+  {
+    "id": 4,
+    "sku": "SKU-000004",
+    "name": "Office Product 4",
+    "category": "Office",
+    "price": 188,
+    "stock": 140
+  },
+  {
+    "id": 5,
+    "sku": "SKU-000005",
+    "name": "Electronics Product 5",
+    "category": "Electronics",
+    "price": 4368,
+    "stock": 411
+  },
+  {
+    "id": 6,
+    "sku": "SKU-000006",
+    "name": "Cloud Product 6",
+    "category": "Cloud",
+    "price": 240,
+    "stock": 147
+  },
+  {
+    "id": 7,
+    "sku": "SKU-000007",
+    "name": "Safety Product 7",
+    "category": "Safety",
+    "price": 3990,
+    "stock": 474
+  },
+  {
+    "id": 8,
+    "sku": "SKU-000008",
+    "name": "Furniture Product 8",
+    "category": "Furniture",
+    "price": 3848,
+    "stock": 263
+  },
+  {
+    "id": 9,
+    "sku": "SKU-000009",
+    "name": "Networking Product 9",
+    "category": "Networking",
+    "price": 2658,
+    "stock": 16
+  },
+  {
+    "id": 10,
+    "sku": "SKU-000010",
+    "name": "Software Product 10",
+    "category": "Software",
+    "price": 4118,
+    "stock": 294
+  },
+  {
+    "id": 11,
+    "sku": "SKU-000011",
+    "name": "Electronics Product 11",
+    "category": "Electronics",
+    "price": 1109,
+    "stock": 442
+  },
+  {
+    "id": 12,
+    "sku": "SKU-000012",
+    "name": "Networking Product 12",
+    "category": "Networking",
+    "price": 4084,
+    "stock": 211
+  },
+  {
+    "id": 13,
+    "sku": "SKU-000013",
+    "name": "Networking Product 13",
+    "category": "Networking",
+    "price": 2807,
+    "stock": 200
+  },
+  {
+    "id": 14,
+    "sku": "SKU-000014",
+    "name": "Hardware Product 14",
+    "category": "Hardware",
+    "price": 868,
+    "stock": 233
+  },
+  {
+    "id": 15,
+    "sku": "SKU-000015",
+    "name": "Office Product 15",
+    "category": "Office",
+    "price": 2300,
+    "stock": 175
+  },
+  {
+    "id": 16,
+    "sku": "SKU-000016",
+    "name": "Furniture Product 16",
+    "category": "Furniture",
+    "price": 4838,
+    "stock": 219
+  },
+  {
+    "id": 17,
+    "sku": "SKU-000017",
+    "name": "Office Product 17",
+    "category": "Office",
+    "price": 4695,
+    "stock": 287
+  },
+  {
+    "id": 18,
+    "sku": "SKU-000018",
+    "name": "Office Product 18",
+    "category": "Office",
+    "price": 3147,
+    "stock": 397
+  },
+  {
+    "id": 19,
+    "sku": "SKU-000019",
+    "name": "Safety Product 19",
+    "category": "Safety",
+    "price": 2928,
+    "stock": 443
+  },
+  {
+    "id": 20,
+    "sku": "SKU-000020",
+    "name": "Office Product 20",
+    "category": "Office",
+    "price": 1671,
+    "stock": 461
+  },
+  {
+    "id": 21,
+    "sku": "SKU-000021",
+    "name": "Office Product 21",
+    "category": "Office",
+    "price": 2474,
+    "stock": 232
+  },
+  {
+    "id": 22,
+    "sku": "SKU-000022",
+    "name": "Software Product 22",
+    "category": "Software",
+    "price": 143,
+    "stock": 367
+  },
+  {
+    "id": 23,
+    "sku": "SKU-000023",
+    "name": "Office Product 23",
+    "category": "Office",
+    "price": 396,
+    "stock": 463
+  },
+  {
+    "id": 24,
+    "sku": "SKU-000024",
+    "name": "Cloud Product 24",
+    "category": "Cloud",
+    "price": 1633,
+    "stock": 140
+  },
+  {
+    "id": 25,
+    "sku": "SKU-000025",
+    "name": "Hardware Product 25",
+    "category": "Hardware",
+    "price": 3964,
+    "stock": 39
+  },
+  {
+    "id": 26,
+    "sku": "SKU-000026",
+    "name": "Software Product 26",
+    "category": "Software",
+    "price": 1095,
+    "stock": 282
+  },
+  {
+    "id": 27,
+    "sku": "SKU-000027",
+    "name": "Software Product 27",
+    "category": "Software",
+    "price": 24,
+    "stock": 119
+  },
+  {
+    "id": 28,
+    "sku": "SKU-000028",
+    "name": "Furniture Product 28",
+    "category": "Furniture",
+    "price": 448,
+    "stock": 472
+  },
+  {
+    "id": 29,
+    "sku": "SKU-000029",
+    "name": "Cloud Product 29",
+    "category": "Cloud",
+    "price": 1091,
+    "stock": 400
+  },
+  {
+    "id": 30,
+    "sku": "SKU-000030",
+    "name": "Furniture Product 30",
+    "category": "Furniture",
+    "price": 4923,
+    "stock": 210
+  },
+  {
+    "id": 31,
+    "sku": "SKU-000031",
+    "name": "Cloud Product 31",
+    "category": "Cloud",
+    "price": 2460,
+    "stock": 141
+  },
+  {
+    "id": 32,
+    "sku": "SKU-000032",
+    "name": "Cloud Product 32",
+    "category": "Cloud",
+    "price": 4806,
+    "stock": 488
+  },
+  {
+    "id": 33,
+    "sku": "SKU-000033",
+    "name": "Networking Product 33",
+    "category": "Networking",
+    "price": 1723,
+    "stock": 172
+  },
+  {
+    "id": 34,
+    "sku": "SKU-000034",
+    "name": "Safety Product 34",
+    "category": "Safety",
+    "price": 3335,
+    "stock": 111
+  },
+  {
+    "id": 35,
+    "sku": "SKU-000035",
+    "name": "Safety Product 35",
+    "category": "Safety",
+    "price": 4733,
+    "stock": 208
+  },
+  {
+    "id": 36,
+    "sku": "SKU-000036",
+    "name": "Hardware Product 36",
+    "category": "Hardware",
+    "price": 4419,
+    "stock": 296
+  },
+  {
+    "id": 37,
+    "sku": "SKU-000037",
+    "name": "Safety Product 37",
+    "category": "Safety",
+    "price": 2351,
+    "stock": 438
+  },
+  {
+    "id": 38,
+    "sku": "SKU-000038",
+    "name": "Furniture Product 38",
+    "category": "Furniture",
+    "price": 907,
+    "stock": 111
+  },
+  {
+    "id": 39,
+    "sku": "SKU-000039",
+    "name": "Cloud Product 39",
+    "category": "Cloud",
+    "price": 1642,
+    "stock": 197
+  },
+  {
+    "id": 40,
+    "sku": "SKU-000040",
+    "name": "Safety Product 40",
+    "category": "Safety",
+    "price": 1874,
+    "stock": 407
+  },
+  {
+    "id": 41,
+    "sku": "SKU-000041",
+    "name": "Office Product 41",
+    "category": "Office",
+    "price": 2356,
+    "stock": 263
+  },
+  {
+    "id": 42,
+    "sku": "SKU-000042",
+    "name": "Electronics Product 42",
+    "category": "Electronics",
+    "price": 2459,
+    "stock": 61
+  },
+  {
+    "id": 43,
+    "sku": "SKU-000043",
+    "name": "Furniture Product 43",
+    "category": "Furniture",
+    "price": 1401,
+    "stock": 162
+  },
+  {
+    "id": 44,
+    "sku": "SKU-000044",
+    "name": "Office Product 44",
+    "category": "Office",
+    "price": 203,
+    "stock": 108
+  },
+  {
+    "id": 45,
+    "sku": "SKU-000045",
+    "name": "Networking Product 45",
+    "category": "Networking",
+    "price": 86,
+    "stock": 478
+  },
+  {
+    "id": 46,
+    "sku": "SKU-000046",
+    "name": "Hardware Product 46",
+    "category": "Hardware",
+    "price": 3855,
+    "stock": 283
+  },
+  {
+    "id": 47,
+    "sku": "SKU-000047",
+    "name": "Cloud Product 47",
+    "category": "Cloud",
+    "price": 4851,
+    "stock": 160
+  },
+  {
+    "id": 48,
+    "sku": "SKU-000048",
+    "name": "Furniture Product 48",
+    "category": "Furniture",
+    "price": 1349,
+    "stock": 291
+  },
+  {
+    "id": 49,
+    "sku": "SKU-000049",
+    "name": "Safety Product 49",
+    "category": "Safety",
+    "price": 413,
+    "stock": 335
+  },
+  {
+    "id": 50,
+    "sku": "SKU-000050",
+    "name": "Networking Product 50",
+    "category": "Networking",
+    "price": 3744,
+    "stock": 1
+  }
+]

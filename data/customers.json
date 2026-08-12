@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "customer_code": "CUS-000001",
+    "full_name": "Jennifer Johnson",
+    "company": "Hooli",
+    "tier": "silver"
+  },
+  {
+    "id": 2,
+    "customer_code": "CUS-000002",
+    "full_name": "Michael Hassan",
+    "company": "Massive Dynamic",
+    "tier": "silver"
+  },
+  {
+    "id": 3,
+    "customer_code": "CUS-000003",
+    "full_name": "Karen Miller",
+    "company": "Globex",
+    "tier": "gold"
+  },
+  {
+    "id": 4,
+    "customer_code": "CUS-000004",
+    "full_name": "Khalid Miller",
+    "company": "Cyberdyne",
+    "tier": "platinum"
+  },
+  {
+    "id": 5,
+    "customer_code": "CUS-000005",
+    "full_name": "Noor Garcia",
+    "company": "Massive Dynamic",
+    "tier": "gold"
+  },
+  {
+    "id": 6,
+    "customer_code": "CUS-000006",
+    "full_name": "Jennifer Garcia",
+    "company": "Wayne Enterprises",
+    "tier": "bronze"
+  },
+  {
+    "id": 7,
+    "customer_code": "CUS-000007",
+    "full_name": "Michael Davis",
+    "company": "Acme Corp",
+    "tier": "gold"
+  },
+  {
+    "id": 8,
+    "customer_code": "CUS-000008",
+    "full_name": "Noor Kim",
+    "company": "Hooli",
+    "tier": "gold"
+  },
+  {
+    "id": 9,
+    "customer_code": "CUS-000009",
+    "full_name": "Ahmed Johnson",
+    "company": "Acme Corp",
+    "tier": "bronze"
+  },
+  {
+    "id": 10,
+    "customer_code": "CUS-000010",
+    "full_name": "Michael Kim",
+    "company": "Wayne Enterprises",
+    "tier": "silver"
+  },
+  {
+    "id": 11,
+    "customer_code": "CUS-000011",
+    "full_name": "Barbara Brown",
+    "company": "Massive Dynamic",
+    "tier": "platinum"
+  },
+  {
+    "id": 12,
+    "customer_code": "CUS-000012",
+    "full_name": "John Ali",
+    "company": "Hooli",
+    "tier": "silver"
+  },
+  {
+    "id": 13,
+    "customer_code": "CUS-000013",
+    "full_name": "Mary Kim",
+    "company": "Stark Industries",
+    "tier": "platinum"
+  },
+  {
+    "id": 14,
+    "customer_code": "CUS-000014",
+    "full_name": "John Rodriguez",
+    "company": "Pied Piper",
+    "tier": "bronze"
+  },
+  {
+    "id": 15,
+    "customer_code": "CUS-000015",
+    "full_name": "Thomas Khan",
+    "company": "Pied Piper",
+    "tier": "platinum"
+  },
+  {
+    "id": 16,
+    "customer_code": "CUS-000016",
+    "full_name": "Ahmed Rodriguez",
+    "company": "Cyberdyne",
+    "tier": "silver"
+  },
+  {
+    "id": 17,
+    "customer_code": "CUS-000017",
+    "full_name": "Michael Smith",
+    "company": "Pied Piper",
+    "tier": "platinum"
+  },
+  {
+    "id": 18,
+    "customer_code": "CUS-000018",
+    "full_name": "Thomas Chen",
+    "company": "Pied Piper",
+    "tier": "gold"
+  },
+  {
+    "id": 19,
+    "customer_code": "CUS-000019",
+    "full_name": "William Smith",
+    "company": "Umbrella",
+    "tier": "bronze"
+  },
+  {
+    "id": 20,
+    "customer_code": "CUS-000020",
+    "full_name": "William Martinez",
+    "company": "Pied Piper",
+    "tier": "platinum"
+  },
+  {
+    "id": 21,
+    "customer_code": "CUS-000021",
+    "full_name": "Mariam Martinez",
+    "company": "Pied Piper",
+    "tier": "silver"
+  },
+  {
+    "id": 22,
+    "customer_code": "CUS-000022",
+    "full_name": "Elizabeth Hassan",
+    "company": "Stark Industries",
+    "tier": "gold"
+  },
+  {
+    "id": 23,
+    "customer_code": "CUS-000023",
+    "full_name": "Barbara Nguyen",
+    "company": "Acme Corp",
+    "tier": "platinum"
+  },
+  {
+    "id": 24,
+    "customer_code": "CUS-000024",
+    "full_name": "Patricia Hassan",
+    "company": "Acme Corp",
+    "tier": "bronze"
+  },
+  {
+    "id": 25,
+    "customer_code": "CUS-000025",
+    "full_name": "Thomas AlHashimi",
+    "company": "Stark Industries",
+    "tier": "gold"
+  },
+  {
+    "id": 26,
+    "customer_code": "CUS-000026",
+    "full_name": "Mary Smith",
+    "company": "Umbrella",
+    "tier": "bronze"
+  },
+  {
+    "id": 27,
+    "customer_code": "CUS-000027",
+    "full_name": "Fatima Martinez",
+    "company": "Pied Piper",
+    "tier": "platinum"
+  },
+  {
+    "id": 28,
+    "customer_code": "CUS-000028",
+    "full_name": "James Johnson",
+    "company": "Pied Piper",
+    "tier": "platinum"
+  },
+  {
+    "id": 29,
+    "customer_code": "CUS-000029",
+    "full_name": "Noor Hassan",
+    "company": "Stark Industries",
+    "tier": "gold"
+  },
+  {
+    "id": 30,
+    "customer_code": "CUS-000030",
+    "full_name": "David AlHashimi",
+    "company": "Umbrella",
+    "tier": "gold"
+  },
+  {
+    "id": 31,
+    "customer_code": "CUS-000031",
+    "full_name": "Aisha Miller",
+    "company": "Wayne Enterprises",
+    "tier": "platinum"
+  },
+  {
+    "id": 32,
+    "customer_code": "CUS-000032",
+    "full_name": "Fatima Johnson",
+    "company": "Initech",
+    "tier": "gold"
+  },
+  {
+    "id": 33,
+    "customer_code": "CUS-000033",
+    "full_name": "Mary AlMaktoum",
+    "company": "Acme Corp",
+    "tier": "gold"
+  },
+  {
+    "id": 34,
+    "customer_code": "CUS-000034",
+    "full_name": "Barbara Kim",
+    "company": "Globex",
+    "tier": "bronze"
+  },
+  {
+    "id": 35,
+    "customer_code": "CUS-000035",
+    "full_name": "Joseph Nguyen",
+    "company": "Initech",
+    "tier": "gold"
+  },
+  {
+    "id": 36,
+    "customer_code": "CUS-000036",
+    "full_name": "John Patel",
+    "company": "Stark Industries",
+    "tier": "bronze"
+  },
+  {
+    "id": 37,
+    "customer_code": "CUS-000037",
+    "full_name": "Karen Martinez",
+    "company": "Acme Corp",
+    "tier": "silver"
+  },
+  {
+    "id": 38,
+    "customer_code": "CUS-000038",
+    "full_name": "Aisha Hassan",
+    "company": "Globex",
+    "tier": "platinum"
+  },
+  {
+    "id": 39,
+    "customer_code": "CUS-000039",
+    "full_name": "Elizabeth Patel",
+    "company": "Initech",
+    "tier": "silver"
+  },
+  {
+    "id": 40,
+    "customer_code": "CUS-000040",
+    "full_name": "Sarah Davis",
+    "company": "Massive Dynamic",
+    "tier": "platinum"
+  },
+  {
+    "id": 41,
+    "customer_code": "CUS-000041",
+    "full_name": "Hassan AlMaktoum",
+    "company": "Massive Dynamic",
+    "tier": "bronze"
+  },
+  {
+    "id": 42,
+    "customer_code": "CUS-000042",
+    "full_name": "David Davis",
+    "company": "Cyberdyne",
+    "tier": "bronze"
+  },
+  {
+    "id": 43,
+    "customer_code": "CUS-000043",
+    "full_name": "Thomas Martinez",
+    "company": "Pied Piper",
+    "tier": "gold"
+  },
+  {
+    "id": 44,
+    "customer_code": "CUS-000044",
+    "full_name": "Patricia Smith",
+    "company": "Massive Dynamic",
+    "tier": "bronze"
+  },
+  {
+    "id": 45,
+    "customer_code": "CUS-000045",
+    "full_name": "James Martinez",
+    "company": "Wayne Enterprises",
+    "tier": "silver"
+  },
+  {
+    "id": 46,
+    "customer_code": "CUS-000046",
+    "full_name": "Jennifer Kim",
+    "company": "Globex",
+    "tier": "gold"
+  },
+  {
+    "id": 47,
+    "customer_code": "CUS-000047",
+    "full_name": "Youssef AlMaktoum",
+    "company": "Pied Piper",
+    "tier": "silver"
+  },
+  {
+    "id": 48,
+    "customer_code": "CUS-000048",
+    "full_name": "James Garcia",
+    "company": "Hooli",
+    "tier": "gold"
+  },
+  {
+    "id": 49,
+    "customer_code": "CUS-000049",
+    "full_name": "Jessica Chen",
+    "company": "Pied Piper",
+    "tier": "bronze"
+  },
+  {
+    "id": 50,
+    "customer_code": "CUS-000050",
+    "full_name": "Mary Garcia",
+    "company": "Cyberdyne",
+    "tier": "bronze"
+  }
+]
