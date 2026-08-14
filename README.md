@@ -1,66 +1,225 @@
 # Meridian Business Suite
 
-Single-process lab app (React UI + Express API on one port). Built for classroom / Burp Suite use.
+Meridian is a single-process business application: a React UI and an Express API served together on **one port**. Students and testers can use a normal browser or Burp Suite against the same origin.
 
-> **Lab only** — do not expose to the public internet.
+> **Lab use only.** Do not expose this application to the public internet.
 
-## Quick start (one app)
+---
+
+## Requirements
+
+Install these before setup:
+
+| Tool | Version | Check |
+|------|---------|--------|
+| Node.js | 18 or newer (22 recommended) | `node -v` |
+| npm | 9 or newer | `npm -v` |
+| Git | any recent version | `git --version` |
+
+Optional (only if you want containers):
+
+- Docker Desktop
+- Docker Compose
+
+---
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/thano-ai/meridian.git
+cd meridian
+```
+
+---
+
+## 2. Install and prepare the app
+
+From the project root (`meridian/`), run:
 
 ```bash
 npm run setup
+```
+
+This single command:
+
+1. Installs backend packages (`backend/`)
+2. Installs frontend packages (`frontend/`)
+3. Seeds the SQLite database with demo employees, products, customers, invoices, and more
+4. Builds the React UI into `frontend/dist` so Express can serve it
+
+If `setup` fails on Windows because native modules cannot compile, install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (C++ workload) and run `npm run setup` again.
+
+### Manual equivalent (if you prefer step by step)
+
+```bash
+npm install --prefix backend
+npm install --prefix frontend
+npm run seed
+npm run build
+```
+
+---
+
+## 3. Run the application
+
+```bash
 npm start
 ```
 
-Open **http://localhost:4721** (use this URL in Burp’s browser too).
+Then open:
 
-| Demo account | Password |
-|--------------|----------|
-| `alex.morgan@meridian.local` | `auditor123` |
-| `admin@meridian.local` | `TempPass123` |
+**http://localhost:4721**
 
-### What `setup` does
-1. Installs backend + frontend dependencies  
-2. Seeds the database  
-3. Builds the UI into `frontend/dist` (served by Express)
+UI and API are on the same origin. There is no separate frontend port.
 
-### Day-to-day
+Stop the server with `Ctrl+C`.
+
+### First-time check
+
+In a browser, open:
+
+- App: http://localhost:4721
+- Health: http://localhost:4721/api/health
+
+You should see the Meridian sign-in page, and the health endpoint should return JSON with `"status":"ok"`.
+
+---
+
+## Demo accounts
+
+| Role | Email | Password |
+|------|--------|----------|
+| Employee | `alex.morgan@meridian.local` | `auditor123` |
+| Admin | `admin@meridian.local` | `TempPass123` |
+
+You can also create a new account from **Create one** on the sign-in page.
+
+---
+
+## Day-to-day commands
+
+Run these from the project root:
+
+| Command | What it does |
+|---------|----------------|
+| `npm start` | Start UI + API on port **4721** |
+| `npm run build` | Rebuild the frontend after UI code changes |
+| `npm run seed` | Reset and re-populate the database |
+| `npm run setup` | Full install + seed + build |
+| `npm run docker:up` | Build and run with Docker Compose |
+
+After changing frontend files, rebuild then restart:
 
 ```bash
-npm start          # run UI+API on :4721
-npm run build      # rebuild UI after frontend changes
-npm run seed       # reset demo data
+npm run build
+npm start
 ```
 
-## Burp Suite
+Backend-only changes only need a restart (`npm start`).
 
-1. Intercept / use Burp browser  
-2. Target **only** `http://localhost:4721`  
-3. Same origin for pages and `/api/*` — no second port  
-4. Watch `X-Vuln-Flag` and `X-Flag-Endpoint` on responses  
-5. Hidden UI: `http://localhost:4721/hidden/flag-submit`
+---
 
-## Docker
+## Configuration
+
+Copy `backend/.env.example` to `backend/.env` if you do not already have one.
+
+Default settings:
+
+```env
+PORT=4721
+JWT_SECRET=super-weak-jwt-secret-change-me
+SECRET_SALT=vuln-biz-app-salt-2024
+NODE_ENV=development
+FRONTEND_URL=http://localhost:4721
+```
+
+The app listens on **4721** so it does not collide with common ports such as 3000, 8000, or 8080.
+
+`.env` is gitignored. Do not commit secrets.
+
+---
+
+## Docker (optional)
 
 ```bash
 docker-compose up --build
 ```
 
-App: http://localhost:4721
+App URL: **http://localhost:4721**
 
-## Scoring
+Stop with `Ctrl+C`, or in another terminal:
 
-- Flags rotate every minute (per student + vuln name + date + time)  
-- Points count **only** after a valid submit on the hidden verification page  
-- Progress: **Account** in the app  
+```bash
+docker-compose down
+```
 
-## Discover the flag page
+---
 
-- Header: `X-Flag-Endpoint: /hidden/flag-submit`  
-- `/config/app-settings.json`  
-- `/dev/api-docs`  
-- HTML source comments  
+## Using Burp Suite
 
-## Example findings
+1. Start the app with `npm start`
+2. In Burp, use the embedded browser (or set the system proxy)
+3. Target **only** `http://localhost:4721`
+4. Pages and `/api/*` share the same host and port
+5. Watch response headers such as `X-Vuln-Flag` and `X-Flag-Endpoint`
+
+Hidden verification page (not linked in the main navigation):
+
+**http://localhost:4721/hidden/flag-submit**
+
+Other discovery hints:
+
+- Header: `X-Flag-Endpoint: /hidden/flag-submit`
+- http://localhost:4721/config/app-settings.json
+- http://localhost:4721/dev/api-docs
+- HTML source comments
+
+---
+
+## Scoring (classroom / assessment)
+
+- Flags are unique per student, vulnerability, date, and minute
+- Flags rotate every minute — submit soon after you capture `X-Vuln-Flag`
+- Points are awarded **only** after a valid flag is submitted
+- Progress is shown under **Account** in the app
+
+---
+
+## Project layout
+
+```text
+meridian/
+├── backend/          Express API, SQLite, flag scoring
+├── frontend/         React + Vite UI (built into frontend/dist)
+├── data/             Sample JSON snapshots
+├── config/           Intentionally exposed config (lab)
+├── backup/           Intentionally exposed backup (lab)
+├── docker-compose.yml
+└── package.json      Root scripts: setup, start, build, seed
+```
+
+---
+
+## Troubleshooting
+
+**Port already in use**  
+Change `PORT` in `backend/.env`, then run `npm start` again.
+
+**`frontend is not built` / 503 page**  
+Run `npm run build`, then `npm start`.
+
+**Empty database / demo login fails**  
+Run `npm run seed`, then restart.
+
+**`better-sqlite3` install error**  
+Install Node.js 18+ and Windows C++ build tools, then run `npm run setup` again.
+
+**UI looks old after a code change**  
+Rebuild (`npm run build`) and restart (`npm start`). The production server serves `frontend/dist`, not the Vite dev server.
+
+---
+
+## Example findings (for testers)
 
 | ID | Where | Trigger |
 |----|--------|---------|
