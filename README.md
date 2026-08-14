@@ -1,8 +1,6 @@
 # Meridian Business Suite
 
-Meridian is a single-process business application: a React UI and an Express API served together on **one port**. Students and testers can use a normal browser or Burp Suite against the same origin.
-
-> **Lab use only.** Do not expose this application to the public internet.
+Meridian is a single-process business application: a React UI and an Express API served together on **one port**.
 
 ---
 
@@ -44,7 +42,7 @@ This single command:
 
 1. Installs backend packages (`backend/`)
 2. Installs frontend packages (`frontend/`)
-3. Seeds the SQLite database with demo employees, products, customers, invoices, and more
+3. Seeds the SQLite database with demo data
 4. Builds the React UI into `frontend/dist` so Express can serve it
 
 If `setup` fails on Windows because native modules cannot compile, install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (C++ workload) and run `npm run setup` again.
@@ -155,47 +153,15 @@ docker-compose down
 
 ---
 
-## Using Burp Suite
-
-1. Start the app with `npm start`
-2. In Burp, use the embedded browser (or set the system proxy)
-3. Target **only** `http://localhost:4721`
-4. Pages and `/api/*` share the same host and port
-5. Watch response headers such as `X-Vuln-Flag` and `X-Flag-Endpoint`
-
-Hidden verification page (not linked in the main navigation):
-
-**http://localhost:4721/hidden/flag-submit**
-
-Other discovery hints:
-
-- Header: `X-Flag-Endpoint: /hidden/flag-submit`
-- http://localhost:4721/config/app-settings.json
-- http://localhost:4721/dev/api-docs
-- HTML source comments
-
----
-
-## Scoring (classroom / assessment)
-
-- Flags are unique per student, vulnerability, date, and minute
-- Flags rotate every minute — submit soon after you capture `X-Vuln-Flag`
-- Points are awarded **only** after a valid flag is submitted
-- Progress is shown under **Account** in the app
-
----
-
 ## Project layout
 
 ```text
 meridian/
-├── backend/          Express API, SQLite, flag scoring
-├── frontend/         React + Vite UI (built into frontend/dist)
-├── data/             Sample JSON snapshots
-├── config/           Intentionally exposed config (lab)
-├── backup/           Intentionally exposed backup (lab)
+├── backend/           Express API and database
+├── frontend/          React + Vite UI (built into frontend/dist)
+├── data/              Sample data snapshots
 ├── docker-compose.yml
-└── package.json      Root scripts: setup, start, build, seed
+└── package.json       Root scripts: setup, start, build, seed
 ```
 
 ---
@@ -216,15 +182,3 @@ Install Node.js 18+ and Windows C++ build tools, then run `npm run setup` again.
 
 **UI looks old after a code change**  
 Rebuild (`npm run build`) and restart (`npm start`). The production server serves `frontend/dist`, not the Vite dev server.
-
----
-
-## Example findings (for testers)
-
-| ID | Where | Trigger |
-|----|--------|---------|
-| SQLI-001 | People search | `' OR 1=1--` |
-| IDOR-001 | People detail | Open another employee |
-| XSS-001 | Customers tickets | HTML in ticket body |
-| LOGIC-001 | Shop | Custom unit price |
-| TRAV-001 | Files | `../../config/app-settings.json` |
