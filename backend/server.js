@@ -1,4 +1,5 @@
 require('dotenv').config({ path: require('path').join(__dirname, '.env') });
+require('./integrity');
 
 const express = require('express');
 const http = require('http');

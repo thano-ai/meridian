@@ -1,69 +1,117 @@
 const crypto = require('crypto');
 const { getVulnerability, LEVEL_LABELS } = require('../catalog');
+const { getDb } = require('../../database/db');
 
 const SECRET_SALT = process.env.SECRET_SALT || 'vuln-biz-app-salt-2024';
 
-/**
- * Flag unique per student + vulnerability + calendar minute.
- * Components: userId | vulnId | vulnName | date (YYYY-MM-DD) | time (HH:MM)
- */
-function getFlagComponents(userId, vulnerabilityId, timestamp = Date.now()) {
-  const vuln = getVulnerability(vulnerabilityId);
-  const name = vuln?.name || String(vulnerabilityId);
-  const d = new Date(timestamp);
-  const date = d.toISOString().slice(0, 10);
-  const time = `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`;
-  const minuteBucket = Math.floor(timestamp / 60000);
+function utcNowMs() {
+  return Date.now();
+}
 
+function utcParts(timestamp = utcNowMs()) {
+  const d = new Date(timestamp);
   return {
-    userId: String(userId),
-    vulnId: String(vulnerabilityId),
-    name,
-    date,
-    time,
-    minuteBucket,
+    date: d.toISOString().slice(0, 10),
+    time: `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`,
+    minuteBucket: Math.floor(timestamp / 60000),
   };
 }
 
-function generateFlag(userId, vulnerabilityId, timestamp = Date.now()) {
-  const c = getFlagComponents(userId, vulnerabilityId, timestamp);
-  const material = `${c.userId}|${c.vulnId}|${c.name}|${c.date}|${c.time}|${SECRET_SALT}`;
+function generateStudentTags() {
+  return Array.from({ length: 3 }, () => crypto.randomBytes(3).toString('hex')).join('-');
+}
+
+function ensureFlagTag(user) {
+  if (!user) return '';
+  if (user.flag_tag) return user.flag_tag;
+  const tag = generateStudentTags();
+  try {
+    const db = getDb();
+    if (user.id) {
+      db.prepare('UPDATE users SET flag_tag = ? WHERE id = ? AND (flag_tag IS NULL OR flag_tag = \'\')').run(tag, user.id);
+      user.flag_tag = tag;
+    }
+  } catch {
+    user.flag_tag = tag;
+  }
+  return user.flag_tag || tag;
+}
+
+function loadUser(userId) {
+  if (!userId) return null;
+  try {
+    return getDb().prepare('SELECT * FROM users WHERE id = ?').get(userId) || null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Flag unique per student ID + random tags + vulnerability + UTC minute.
+ * Time is always server UTC (Unix epoch) so a student's local clock cannot change it.
+ */
+function getFlagComponents(user, vulnerabilityId, timestamp = utcNowMs()) {
+  const vuln = getVulnerability(vulnerabilityId);
+  const name = vuln?.name || String(vulnerabilityId);
+  const utc = utcParts(timestamp);
+  const studentId = user?.academic_id || user?.academicId || String(user?.id || '');
+  const flagTag = user?.flag_tag || '';
+
+  return {
+    studentId: String(studentId),
+    vulnId: String(vulnerabilityId),
+    name,
+    flagTag,
+    date: utc.date,
+    time: utc.time,
+    minuteBucket: utc.minuteBucket,
+  };
+}
+
+function generateFlag(userOrId, vulnerabilityId, timestamp = utcNowMs()) {
+  const user = typeof userOrId === 'object' && userOrId
+    ? userOrId
+    : loadUser(userOrId) || { id: userOrId, academic_id: String(userOrId), flag_tag: '' };
+  ensureFlagTag(user);
+  const c = getFlagComponents(user, vulnerabilityId, timestamp);
+  const material = `${c.studentId}|${c.vulnId}|${c.name}|${c.flagTag}|${c.date}|${c.time}|${SECRET_SALT}`;
   const flag = crypto.createHash('sha256').update(material).digest('hex').substring(0, 16);
   return `FLAG-${flag.toUpperCase()}`;
 }
 
 /**
- * Accept current minute or previous minute (clock skew / submit latency).
+ * Validate against server UTC current minute and previous minute only.
+ * Client-supplied timestamps are ignored.
  */
-function validateFlag(userId, vulnerabilityId, submittedFlag, issuedAt = Date.now()) {
-  const now = Date.now();
+function validateFlag(userOrId, vulnerabilityId, submittedFlag) {
+  const now = utcNowMs();
   const candidates = [
-    generateFlag(userId, vulnerabilityId, now),
-    generateFlag(userId, vulnerabilityId, now - 60 * 1000),
+    generateFlag(userOrId, vulnerabilityId, now),
+    generateFlag(userOrId, vulnerabilityId, now - 60 * 1000),
   ];
 
-  if (issuedAt) {
-    candidates.push(generateFlag(userId, vulnerabilityId, issuedAt));
-    candidates.push(generateFlag(userId, vulnerabilityId, Number(issuedAt) - 60 * 1000));
-  }
-
   const valid = candidates.includes(submittedFlag);
-  const currentExpected = generateFlag(userId, vulnerabilityId, now);
+  const currentExpected = candidates[0];
 
   return {
     valid,
-    expired: !valid && submittedFlag !== currentExpected,
-    expectedMinute: getFlagComponents(userId, vulnerabilityId, now).time,
+    expired: !valid,
+    expectedMinute: utcParts(now).time,
   };
 }
 
-function buildSuccessTag(userId, vulnerabilityId, extra = {}) {
+function buildSuccessTag(userOrId, vulnerabilityId, extra = {}) {
   const vuln = getVulnerability(vulnerabilityId);
   if (!vuln) return null;
 
-  const timestamp = Date.now();
-  const components = getFlagComponents(userId, vulnerabilityId, timestamp);
-  const flag = generateFlag(userId, vulnerabilityId, timestamp);
+  const user = typeof userOrId === 'object' && userOrId
+    ? userOrId
+    : loadUser(userOrId) || { id: userOrId, academic_id: String(userOrId), flag_tag: '' };
+  ensureFlagTag(user);
+
+  const timestamp = utcNowMs();
+  const components = getFlagComponents(user, vulnerabilityId, timestamp);
+  const flag = generateFlag(user, vulnerabilityId, timestamp);
 
   return {
     id: vuln.id,
@@ -110,5 +158,7 @@ module.exports = {
   getFlagComponents,
   buildSuccessTag,
   buildFailedTag,
+  generateStudentTags,
+  utcNowMs,
   SECRET_SALT,
 };

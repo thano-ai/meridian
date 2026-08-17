@@ -244,7 +244,17 @@ function initSchema() {
     );
   `);
 
+  ensureColumn(database, 'users', 'student_group', "TEXT");
+  ensureColumn(database, 'users', 'flag_tag', "TEXT");
+
   return database;
+}
+
+function ensureColumn(database, table, column, typeSql) {
+  const cols = database.prepare(`PRAGMA table_info(${table})`).all();
+  if (!cols.some((c) => c.name === column)) {
+    database.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${typeSql}`);
+  }
 }
 
 function closeDb() {

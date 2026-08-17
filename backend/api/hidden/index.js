@@ -2,7 +2,7 @@ const express = require('express');
 const { getDb } = require('../../database/db');
 const { optionalAuth } = require('../../middleware/auth');
 const { validateFlag } = require('../../vulnerabilities/flags/generator');
-const { getVulnerability, VULNERABILITIES } = require('../../vulnerabilities/catalog');
+const { getVulnerability } = require('../../vulnerabilities/catalog');
 const { calculateScore } = require('../../vulnerabilities/scoring/calculator');
 const { recordDiscovery } = require('../../middleware/vuln');
 
@@ -12,7 +12,7 @@ const router = express.Router();
  * Hidden flag submission — marks count only after accepted submit.
  */
 function handleFlagSubmit(req, res) {
-  const { vulnerabilityId, flag, timestamp, evidence } = req.body || {};
+  const { vulnerabilityId, flag, evidence } = req.body || {};
 
   if (!vulnerabilityId || !flag) {
     return res.status(400).json({
@@ -47,10 +47,12 @@ function handleFlagSubmit(req, res) {
       .prepare(`SELECT vulnerability_id, hardness as level, points, flag FROM flag_submissions WHERE user_id = ? AND status = 'accepted'`)
       .all(userId);
     const scoreData = calculateScore({
-      found: accepted.map((f) => ({ level: f.level, points: f.points, name: f.vulnerability_id })),
-      hiddenFound: 0,
-      chainCount: 0,
-      falsePositives: 0,
+      found: accepted.map((f) => ({
+        id: f.vulnerability_id,
+        level: f.level,
+        points: f.points,
+        name: f.vulnerability_id,
+      })),
     });
     return res.status(200).json({
       status: 'already_accepted',
@@ -59,13 +61,13 @@ function handleFlagSubmit(req, res) {
       hardness: vuln.level,
       totalProgress: scoreData.score,
       ranking: scoreData.ranking,
+      submittedCount: scoreData.solvedCount,
+      complete: scoreData.complete,
+      remaining: scoreData.remaining,
     });
   }
 
-  const issuedAt = timestamp
-    ? Number(timestamp) * (String(timestamp).length <= 10 ? 1000 : 1)
-    : Date.now();
-  const result = validateFlag(userId, vulnerabilityId, flag, issuedAt);
+  const result = validateFlag(req.user, vulnerabilityId, flag);
 
   if (!result.valid) {
     db.prepare(
@@ -98,22 +100,16 @@ function handleFlagSubmit(req, res) {
     )
     .all(userId);
 
-  const hiddenFound = accepted.filter((f) =>
-    VULNERABILITIES.find((v) => v.id === f.vulnerability_id)?.hidden
-  ).length;
-
-  const falsePositives = db
-    .prepare(`SELECT COUNT(*) as c FROM flag_submissions WHERE user_id = ? AND status = 'rejected'`)
-    .get(userId).c;
-
   const scoreData = calculateScore({
     found: accepted.map((f) => {
       const meta = getVulnerability(f.vulnerability_id);
-      return { level: f.level, points: f.points, name: meta?.name || f.vulnerability_id };
+      return {
+        id: f.vulnerability_id,
+        level: f.level,
+        points: f.points,
+        name: meta?.name || f.vulnerability_id,
+      };
     }),
-    hiddenFound,
-    chainCount: 0,
-    falsePositives,
   });
 
   res.json({
@@ -122,7 +118,9 @@ function handleFlagSubmit(req, res) {
     hardness: vuln.level,
     totalProgress: scoreData.score,
     ranking: scoreData.ranking,
-    submittedCount: accepted.length,
+    submittedCount: scoreData.solvedCount,
+    complete: scoreData.complete,
+    remaining: scoreData.remaining,
     vulnerability: { id: vuln.id, name: vuln.name },
   });
 }

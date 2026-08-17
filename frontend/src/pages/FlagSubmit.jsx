@@ -13,7 +13,7 @@ export default function FlagSubmit() {
   const [result, setResult] = useState(null);
 
   if (!token) {
-    return <Navigate to="/login" replace state={{ from: '/hidden/flag-submit' }} />;
+    return <Navigate to="/register" replace state={{ from: '/hidden/flag-submit' }} />;
   }
 
   async function onSubmit(e) {
@@ -100,7 +100,21 @@ export default function FlagSubmit() {
                 <p className="font-medium capitalize">{result.data.status}</p>
                 {result.data.points != null && <p>Points: +{result.data.points}</p>}
                 {result.data.totalProgress != null && (
-                  <p>Score: {result.data.totalProgress}/100 · {result.data.ranking}</p>
+                  <p>
+                    Score: {result.data.totalProgress}/100
+                    {result.data.submittedCount != null ? ` · Findings: ${result.data.submittedCount}/10` : ''}
+                    {result.data.ranking ? ` · ${result.data.ranking}` : ''}
+                  </p>
+                )}
+                {result.data.complete && <p className="mt-1 font-medium">Session complete.</p>}
+                {!result.data.complete && result.data.remaining && (
+                  <p className="mt-1 text-neutral-600">
+                    Remaining: {result.data.remaining.points} points
+                    {result.data.remaining.findings > 0
+                      ? ` and ${result.data.remaining.findings} more finding${result.data.remaining.findings === 1 ? '' : 's'}`
+                      : ''}
+                    .
+                  </p>
                 )}
                 <Link to="/profile" className="mt-2 inline-block underline">
                   View session progress

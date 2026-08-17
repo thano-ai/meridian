@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "createdAt": "2026-08-17T09:34:32.102Z",
+  "hashes": {
+    "package.json": "21b4c97e62416ca77ba46c059f5424085596e9e81333dab82308b56be4c62e41",
+    "backend/integrity.js": "a889d224a392555d06b0e4148b1f727feab114b0b17ccde5e82e877507167910",
+    "backend/server.js": "c71bc4aeb5b3e2c714cfe629414ee3517ed4a61d938ee9bfdbdc04dd6534d931",
+    "backend/api/auth/index.js": "34792d4481222d4e18e3f3fbe19afd933e2dfc5c8b7f28ff7de804cb67a92e41",
+    "backend/api/hidden/index.js": "88e7c2a2d6c4c76917dc4bb64fef9adcc71e2f11dfb4e3d82c5b8e2f6069bdb3",
+    "backend/middleware/auth.js": "b75bba9e9b4ea4595bbd72e1599838a50a4766e7a7648ff8ce646675f79fcc5f",
+    "backend/middleware/vuln.js": "414554e0151e5c7f8a98c32502016ec49a68a469bb2d39978441380489bb399b",
+    "backend/vulnerabilities/catalog.js": "fffbd65fc231dd9bff8536901581a6709b2b7b4bbca304006eaf04f8153605c4",
+    "backend/vulnerabilities/flags/generator.js": "aa2185266daa425b532d55d9adf1a70396a5b5323daadcaf400dc4a7ec36282b",
+    "backend/vulnerabilities/scoring/calculator.js": "5f00e734f20767aaf095ca125a61257a9357b07b1559ee7469d36e9a5337055c"
+  },
+  "signature": "b3938f5a0a1717a99829373acca74415e78ce91e4ac59e9d4c7f505221454bb2"
+}

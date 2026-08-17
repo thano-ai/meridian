@@ -17,7 +17,7 @@ import FlagSubmit from './pages/FlagSubmit';
 
 function Private({ children }) {
   const token = useAuthStore((s) => s.token);
-  if (!token) return <Navigate to="/login" replace />;
+  if (!token) return <Navigate to="/register" replace />;
   return children;
 }
 

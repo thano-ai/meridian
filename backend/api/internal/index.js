@@ -2,7 +2,6 @@ const express = require('express');
 const { getDb } = require('../../database/db');
 const { authRequired, optionalAuth } = require('../../middleware/auth');
 const { calculateScore } = require('../../vulnerabilities/scoring/calculator');
-const { VULNERABILITIES } = require('../../vulnerabilities/catalog');
 const { recordDiscovery, attachFlagHeader } = require('../../middleware/vuln');
 const { wrapResponseWithVuln } = require('../../vulnerabilities/tags/display');
 const { generateFlag } = require('../../vulnerabilities/flags/generator');
@@ -39,25 +38,16 @@ router.get('/score', authRequired, (req, res) => {
        WHERE user_id = ? AND status = 'accepted'`
     )
     .all(req.user.id);
-  const falsePositives = db
-    .prepare(`SELECT COUNT(*) as c FROM flag_submissions WHERE user_id = ? AND status = 'rejected'`)
-    .get(req.user.id).c;
-  const hiddenFound = accepted.filter((f) =>
-    VULNERABILITIES.find((v) => v.id === f.vulnerability_id)?.hidden
-  ).length;
-
   const result = calculateScore({
     found: accepted.map((f) => ({
+      id: f.vulnerability_id,
       level: f.level,
       points: f.points,
       name: f.vulnerability_id,
     })),
-    hiddenFound,
-    chainCount: 0,
-    falsePositives,
   });
 
-  res.json({ data: result, submitted: accepted.length });
+  res.json({ data: result, submitted: result.solvedCount });
 });
 
 router.post('/score', authRequired, (req, res) => {
@@ -70,13 +60,11 @@ router.post('/score', authRequired, (req, res) => {
     .all(req.user.id);
   const result = calculateScore({
     found: accepted.map((f) => ({
+      id: f.vulnerability_id,
       level: f.level,
       points: f.points,
       name: f.vulnerability_id,
     })),
-    hiddenFound: 0,
-    chainCount: req.body?.chainCount || 0,
-    falsePositives: req.body?.falsePositives || 0,
   });
   res.json({ data: result });
 });
@@ -89,7 +77,7 @@ router.get('/audit-log', authRequired, (req, res) => {
 });
 
 router.get('/flag-preview/:vulnId', authRequired, (req, res) => {
-  const flag = generateFlag(req.user.id, req.params.vulnId, Date.now());
+  const flag = generateFlag(req.user, req.params.vulnId);
   res.json({
     data: {
       vulnerabilityId: req.params.vulnId,

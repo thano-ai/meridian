@@ -49,6 +49,10 @@ const LEVEL_LABELS = {
 
 const POINTS = { critical: 25, high: 20, medium: 15, low: 10, info: 5 };
 
+for (const vuln of VULNERABILITIES) {
+  vuln.points = POINTS[vuln.level] ?? vuln.points;
+}
+
 function getVulnerability(id) {
   return VULNERABILITIES.find((v) => v.id === id);
 }
